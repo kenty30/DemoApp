@@ -1,10 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using Demo.Users.Application.Common.Models;
+using MediatR;
 
 namespace Demo.Users.Application.Queries.Users.GetUserById
 {
-    class GetUserByIdQuery
+    public class GetUserByIdQuery : IRequest<UserDto>
     {
+        public Guid UserId { get; set; }
+
+        public GetUserByIdQuery(Guid userId)
+        {
+            UserId = userId;
+        }
     }
 }
