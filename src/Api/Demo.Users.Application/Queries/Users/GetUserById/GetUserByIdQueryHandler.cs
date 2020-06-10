@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using Demo.Users.Application.Common.Constants;
 using Demo.Users.Application.Common.Exceptions;
 using Demo.Users.Application.Common.Interfaces;
 using Demo.Users.Application.Common.Models;
@@ -24,11 +25,11 @@ namespace Demo.Users.Application.Queries.Users.GetUserById
 
         public async Task<UserDto> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
         {
-            var user = _usersDbContext.Users.FirstOrDefaultAsync(x => x.UserId == request.UserId);
+            var user = await _usersDbContext.Users.FirstOrDefaultAsync(x => x.UserId == request.UserId);
 
             if (user == null)
             {
-                throw new UserNotFoundException(NotFoundErrorMessage);
+                throw new NotFoundException(ErrorMessages.UserNotFoundErrorMessage);
             }
 
             return _mapper.Map<UserDto>(user);

@@ -1,10 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using MediatR;
 
 namespace Demo.Users.Application.Commands.Users.DeleteUser
 {
-    class DeleteUserCommand
+    public class DeleteUserCommand : IRequest
     {
+        public Guid UserId { get; set; }
+
+        public DeleteUserCommand(Guid userId)
+        {
+            UserId = userId;
+        }
     }
 }

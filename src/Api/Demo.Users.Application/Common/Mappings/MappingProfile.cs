@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Demo.Users.Application.Common.Models;
+using Demo.Users.Domain.Entities;
 
 namespace Demo.Users.Application.Common.Mappings
 {
@@ -6,6 +8,7 @@ namespace Demo.Users.Application.Common.Mappings
     {
         public MappingProfile()
         {
+            CreateMap<User, UserDto>();
         }
     }
 }

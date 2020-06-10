@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using Demo.Users.Application.Common.Models;
+using MediatR;
 
 namespace Demo.Users.Application.Queries.Users.GetAllUsers
 {
-    class GetAllUsersQuery
+    public class GetAllUsersQuery : IRequest<IEnumerable<UserDto>>
     {
+
     }
 }

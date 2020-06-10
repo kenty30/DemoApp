@@ -1,10 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using FluentValidation;
 
 namespace Demo.Users.Application.Queries.Users.GetUserById
 {
-    class GetUserByIdQueryValidator
+    public class GetUserByIdQueryValidator : AbstractValidator<GetUserByIdQuery>
     {
+        public GetUserByIdQueryValidator()
+        {
+            RuleFor(x => x.UserId).NotEmpty();
+        }
     }
 }

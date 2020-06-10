@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
+﻿using System.Reflection;
 using AutoMapper;
 using Demo.Users.Application.Common.Behaviours;
 using MediatR;
@@ -11,7 +8,7 @@ namespace Demo.Users.Application
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddApplicationCommonServices(this IServiceCollection services)
+        public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(Assembly.GetExecutingAssembly());

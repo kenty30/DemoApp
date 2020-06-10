@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using MediatR;
 
 namespace Demo.Users.Application.Commands.Users.CreateUser
