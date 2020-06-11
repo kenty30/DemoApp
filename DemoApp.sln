@@ -23,12 +23,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.Users.Api.IntegrationT
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4EC48C8A-0FC7-4AEB-BC69-B3565AF8AE33}"
 	ProjectSection(SolutionItems) = preProject
+		Demo App.postman_collection.json = Demo App.postman_collection.json
 		gitignore = gitignore
 	EndProjectSection
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{49A0C335-06B9-4D46-B866-F825B84E22EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.Listener", "src\ConsoleApp\Demo.Listener\Demo.Listener.csproj", "{186F29E9-6D41-4048-B430-696A1B2188B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.Listener", "src\ConsoleApp\Demo.Listener\Demo.Listener.csproj", "{186F29E9-6D41-4048-B430-696A1B2188B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
