@@ -12,8 +12,6 @@ namespace Demo.Users.Application.Queries.Users.GetUserById
 {
     public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, UserDto>
     {
-        private const string NotFoundErrorMessage = "Requested user does not exists.";
-
         private readonly IUsersDbContext _usersDbContext;
         private readonly IMapper _mapper;
 

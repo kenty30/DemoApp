@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Demo.Users.Application.Common.Interfaces;
 using MediatR;
 
 namespace Demo.Users.Application.Commands.Users.CreateUser
@@ -16,9 +17,11 @@ namespace Demo.Users.Application.Commands.Users.CreateUser
 
         public class UserCreatedNotificationHandler : INotificationHandler<UserCreatedNotification>
         {
-            public UserCreatedNotificationHandler()
-            {
+            private readonly IRabbitMQService _rabbitMQService;
 
+            public UserCreatedNotificationHandler(IRabbitMQService rabbitMQService)
+            {
+                _rabbitMQService = rabbitMQService;
             }
 
             public async Task Handle(UserCreatedNotification notification, CancellationToken cancellationToken)

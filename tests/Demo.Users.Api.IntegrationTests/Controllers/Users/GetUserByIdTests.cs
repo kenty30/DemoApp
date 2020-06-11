@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Demo.Users.Api.IntegrationTests.Setup;
@@ -18,11 +19,11 @@ namespace Demo.Users.Api.IntegrationTests.Controllers.Users
         }
 
         [Fact]
-        public async Task GivenValidRequest_ReturnUser()
+        public async Task GivenExistingUserId_ShouldReturnUser()
         {
             var client = _factory.GetAnonymousClient();
 
-            var userId = Guid.NewGuid();
+            var userId = Utilities.KnownUserID1;
 
             var response = await client.GetAsync($"/api/users/{userId}");
 
@@ -31,6 +32,30 @@ namespace Demo.Users.Api.IntegrationTests.Controllers.Users
             var user = await Utilities.GetResponseContent<UserDto>(response);
 
             Assert.Equal(userId, user.UserId);
+        }
+
+        [Fact]
+        public async Task GivenNonExistingUserId_ShouldReturnNotFoundStatusCode()
+        {
+            var client = _factory.GetAnonymousClient();
+
+            var userId = Guid.NewGuid();
+
+            var response = await client.GetAsync($"/api/users/{userId}");
+
+            Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
+        }
+
+        [Fact]
+        public async Task GivenInvalidRequest_ShouldReturnBadRequestStatusCode()
+        {
+            var client = _factory.GetAnonymousClient();
+
+            var userId = Guid.Empty;
+
+            var response = await client.GetAsync($"/api/users/{userId}");
+
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
     }
 }
