@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Demo.Users.Api.IntegrationTests.Setup;
 using Demo.Users.Application.Common.Models;

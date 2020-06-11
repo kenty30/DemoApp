@@ -2,6 +2,6 @@
 {
     public interface IRabbitMQService
     {
-
+        bool Enqueue(string message);
     }
 }

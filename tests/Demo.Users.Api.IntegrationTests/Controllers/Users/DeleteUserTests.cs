@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 using Demo.Users.Api.IntegrationTests.Setup;
-using Demo.Users.Application.Commands.Users.DeleteUser;
 using Xunit;
 
 namespace Demo.Users.Api.IntegrationTests.Controllers.Users

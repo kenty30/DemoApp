@@ -1,6 +1,7 @@
 using Demo.Users.Api.Extensions;
 using Demo.Users.Application;
 using Demo.Users.Application.Common.Interfaces;
+using Demo.Users.Application.Common.Models;
 using Demo.Users.Infrastructure;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
@@ -33,6 +34,8 @@ namespace Demo.Users.Api
 
             services.AddOpenApiDocument();
 
+            services.Configure<RabbitMQAppSettings>(options => Configuration.Bind("RabbitMQAppSettings", options));
+
             services.Configure<ApiBehaviorOptions>(options =>
             {
                 options.SuppressModelStateInvalidFilter = true;
@@ -48,7 +51,7 @@ namespace Demo.Users.Api
             }
 
             app.UseCustomExceptionHandler();
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseOpenApi();
             app.UseSwaggerUi3();

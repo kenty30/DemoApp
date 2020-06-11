@@ -1,5 +1,6 @@
 ﻿using Demo.Users.Application.Common.Interfaces;
 using Demo.Users.Infrastructure.Persistence;
+using Demo.Users.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -13,6 +14,8 @@ namespace Demo.Users.Infrastructure
         {
             services.AddDbContext<IUsersDbContext, UsersDbContext>(options =>
                 options.UseInMemoryDatabase(databaseName: DbName));
+
+            services.AddSingleton<IRabbitMQService, RabbitMQService>();
 
             return services;
         }

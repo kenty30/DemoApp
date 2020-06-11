@@ -4,5 +4,9 @@ namespace Demo.Users.Api.IntegrationTests.Setup.FakeServices
 {
     public class FakeRabbitMQService : IRabbitMQService
     {
+        public bool Enqueue(string message)
+        {
+            return true;
+        }
     }
 }

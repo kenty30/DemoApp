@@ -24,9 +24,9 @@ namespace Demo.Users.Application.Commands.Users.CreateUser
                 _rabbitMQService = rabbitMQService;
             }
 
-            public async Task Handle(UserCreatedNotification notification, CancellationToken cancellationToken)
+            public Task Handle(UserCreatedNotification notification, CancellationToken cancellationToken)
             {
-
+                return Task.FromResult(_rabbitMQService.Enqueue($"UserCreated: {notification.UserId}"));
             }
         }
     }
