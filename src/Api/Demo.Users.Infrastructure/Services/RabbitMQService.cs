@@ -21,18 +21,26 @@ namespace Demo.Users.Infrastructure.Services
             _appSettings = options.Value;
             _logger = logger;
 
-            _factory = new ConnectionFactory() { HostName = _appSettings.HostName, Port = _appSettings.Port };
-            _factory.UserName = _appSettings.UserName;
-            _factory.Password = _appSettings.Password;
+            try
+            {
+                _factory = new ConnectionFactory() { HostName = _appSettings.HostName, Port = _appSettings.Port };
+                _factory.UserName = _appSettings.UserName;
+                _factory.Password = _appSettings.Password;
 
-            _connection = _factory.CreateConnection();
+                _connection = _factory.CreateConnection();
 
-            _channel = _connection.CreateModel();
-            _channel.QueueDeclare(queue: options.Value.QueueName,
-                                    durable: false,
-                                    exclusive: false,
-                                    autoDelete: false,
-                                    arguments: null);
+                _channel = _connection.CreateModel();
+                _channel.QueueDeclare(queue: options.Value.QueueName,
+                                        durable: false,
+                                        exclusive: false,
+                                        autoDelete: false,
+                                        arguments: null);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                throw;
+            }
         }
 
         public bool Enqueue(string message)
